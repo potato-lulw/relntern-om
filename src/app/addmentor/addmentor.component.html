@@ -1,0 +1,123 @@
+<style>
+  .slide:hover,
+  .slide:focus {
+    box-shadow: inset 6.5em 0 0 0 var(--hover);
+
+    .avatar {
+      vertical-align: middle;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    button:hover {
+      background-color: #4CAF50;
+      color: white;
+      transition: ease 0.5s;
+    }
+  }
+</style>
+
+<body class="bg-white-100">
+  <nav>
+    <header class="bg-white py-4">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <h1 class="text-black text-xl font-bold flex items-center">
+          <img class="mx-auto h-10 w-auto"
+            src="https://1000logos.net/wp-content/uploads/2021/08/Reliance-Industries-Limited-RIL-Logo-500x314.jpg"
+            alt="Your Company">
+        </h1>
+        <nav>
+          <ul class="flex space-x-4 text-black">
+            <li id="Add_Mentor"><button type="button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                (click)="goToPage('addmentor')">Add Mentor</button></li>
+            <li id="Add_Mentor"><button type="button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                (click)="goToPage('')">Logout</button></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  </nav>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a (click)="goToPage('dashboard')">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add Mentor</li>
+    </ol>
+  </nav>
+
+  <main class="container mx-auto mt-8 px-4">
+    <div class="bg-white rounded-lg shadow-lg p-8">
+      <h2 class="text-2xl font-bold mb-4">Add Mentor</h2>
+      <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-gray-700 font mb-2" for="mentorname">Mentor Name</label>
+            <input type="text" id="mentorname" name="mentorname"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter Mentor name" #mentorname (ngModel)="mentorname" required>
+          </div>
+          <div>
+            <label class="block text-gray-700 font mb-2" for="mentoremail">Mentor Email</label>
+            <input type="email" id="mentoremail" name="mentoremail"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter mentor email" #mentoremail (ngModel)="mentoremail" required>
+          </div>
+          <div>
+            <label class="block text-gray-700 font mb-2" for="mentorpass">New Password</label>
+            <input type="password" id="mentorpass" name="mentorpass"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter relntern password" #mentorpass (ngModel)="mentorpass"  required>
+          </div>
+          <div>
+            <label class="block text-gray-700 font mb-2" for="project">Project name</label>
+            <input type="text" id="project" name="project"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter project name" #project (ngModel)="project" required>
+          </div>
+
+          <div>
+            <label class="block text-gray-700 font mb-2" for="regisDate">Registration Date</label>
+            <input type="date" id="regisDate" name="regisDate"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              #regisDate (ngModel)="regisDate" required>
+          </div>
+          <div>
+            <label class="block text-gray-700 font mb-2" for="role">Role</label>
+            <input type="text" id="role" name="role"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              #role (ngModel)="role" required>
+          </div>
+          <div class="col-span-2">
+            <label class="block text-gray-700 font mb-2" for="association">Association</label>
+            <select id="association" name="association"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              #association (ngModel)="mentorpass" required>
+              <option value="" disabled selected>Select association</option>
+              <option value="PetChem IT">PetChem IT</option>
+              <option value="Finance">Finance</option>
+              <option value="Marketing">Marketing</option>
+              <option value="HR">HR</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <ul class="flex space-x-4 text-black">
+            <li> <button type="submit"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                Add Mentor
+              </button> </li>
+            <li> <button type="cancel"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                Cancel
+              </button> </li>
+          </ul>
+        </div>
+
+      </form>
+    </div>
+  </main>
+
+</body>

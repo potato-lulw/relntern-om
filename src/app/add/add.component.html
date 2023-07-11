@@ -1,0 +1,173 @@
+<style>
+  .slide:hover,
+  .slide:focus {
+    box-shadow: inset 6.5em 0 0 0 var(--hover);
+
+    .avatar {
+      vertical-align: middle;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    button:hover {
+      background-color: #4CAF50;
+      color: white;
+      transition: ease 0.5s;
+    }
+
+    .typing-demo {
+      width: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      animation: typing 3s steps(8), blink .4s step-end infinite alternate;
+      border-right: 3px solid;
+    }
+
+
+    .breadcrumb {
+      background-color: #fff;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+      list-style: none;
+      border-radius: 0.25rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .breadcrumb:hover {
+      background-color: #fff;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+      list-style: none;
+      border-radius: 0.25rem;
+      text-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+  }
+</style>
+
+
+<body class="bg-white-100">
+  <nav>
+    <header class="bg-white py-4">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <h1 class="text-black text-xl font-bold flex items-center">
+          <img class="mx-auto h-10 w-auto"
+            src="https://1000logos.net/wp-content/uploads/2021/08/Reliance-Industries-Limited-RIL-Logo-500x314.jpg"
+            alt="Your Company">
+          <!-- <span class="ml-2" id="relntern-nav">
+            <div class="nav-title">Welcome, Admin</div>
+          </span> -->
+        </h1>
+        <nav>
+          <ul class="flex space-x-4 text-black">
+            <li id="Add_Mentor"><button type="button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                (click)="goToPage('addmentor')">Add Mentor</button></li>
+            <li id="Add_Mentor"><button type="button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                (click)="goToPage('')">Logout</button></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  </nav>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a (click)="goToPage('dashboard')">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add Intern</li>
+    </ol>
+  </nav>
+
+  <main class="container mx-auto mt-8 px-4">
+    <div class="bg-white rounded-lg shadow-lg p-8">
+      <h2 class="text-2xl font-bold mb-4">Add Intern</h2>
+      <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="col-span-2">
+            <label class="block text-gray-700 font mb-2" for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter full name" #fullname (ngModel)="fullname" required>
+          </div>
+          <div>
+            <label class="block text-gray-700 font mb-2" for="email">Email</label>
+            <input type="email" id="email" name="email"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter email address" #internemail (ngModel)="internemail" required>
+          </div>
+
+          <div>
+            <label class="block text-gray-700 font mb-2" for="mentor">Mentor</label>
+            <input type="mentor" id="mentor" name="mentor"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter mentor name" #mentorname (ngModel)="mentorname" required>
+          </div>
+
+          <div>
+            <label class="block text-gray-700 font mb-2" for="mentoremail">Mentor Email</label>
+            <input type="text" id="mentoremail" name="mentoremail"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter mentor's email" #mentoremail (ngModel)="mentoremail" required>
+          </div>
+          <div>
+            <label class="block text-gray-700 font mb-2" for="email">Project Name</label>
+            <input type="text" id="projectname" name="projectname"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter project name" #projectname (ngModel)="projectname" required>
+          </div>
+          <div>
+            <label class="block text-gray-700 font mb-2" for="email">Project Status</label>
+            <input type="text" id="projectstatus" name="projectstatus"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter project status" #projectstatus (ngModel)="projectstatus" required>
+          </div>
+          <div>
+            <label class="block text-gray-700 font mb-2" for="startDate">Start Date</label>
+            <input type="date" id="startDate" name="startDate"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              #startdate (ngModel)="startdate" required>
+          </div>
+          <div>
+            <label class="block text-gray-700 font mb-2" for="endDate">End Date</label>
+            <input type="date" id="endDate" name="endDate"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              #enddate (ngModel)="enddate" required>
+          </div>
+          <div>
+            <label class="block text-gray-700 font mb-2" for="role">Role</label>
+            <input type="data" id="role" name="role"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              #role (ngModel)="role" required>
+          </div>
+          <div class="col-span-2">
+            <label class="block text-gray-700 font mb-2" for="association">Association</label>
+            <select id="association" name="association"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              #association (ngModel)="association" required>
+              <option value="" disabled selected>Select association</option>
+              <option value="PetChem IT">PetChem IT</option>
+              <option value="Finance">Finance</option>
+              <option value="Marketing">Marketing</option>
+              <option value="HR">HR</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <ul class="flex space-x-4 text-black">
+            <li><button type="submit" value="Register"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                Add Intern
+              </button></li>
+            <li><button type="cancel"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                Cancel
+              </button></li>
+          </ul>
+        </div>
+      </form>
+    </div>
+  </main>
+
+</body>
